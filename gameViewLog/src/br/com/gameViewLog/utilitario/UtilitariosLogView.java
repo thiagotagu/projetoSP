@@ -1,7 +1,5 @@
 package br.com.gameViewLog.utilitario;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,29 +13,13 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 public class UtilitariosLogView {
 
-	public static Properties carregaConfiguracaoProperties() throws IOException {
-
-		Properties props = new Properties();
-
-		
-		try {	
-			FileInputStream file = new FileInputStream(Thread.currentThread().getContextClassLoader().getResource("configuracaoLog.properties").getPath());
-			
-			props.load(file);
-			} catch (Exception e) {
-				System.out.println(e);
-			}
-		
-
-		return props;
-	}
+	
 
 	public static Boolean validaData(String data) {
 

@@ -3,9 +3,9 @@ package br.com.gameViewLog.carregamento;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Properties;
 
 import br.com.gameViewLog.bean.PartidaTO;
+import br.com.gameViewLog.utilitario.CarregaPropertie;
 import br.com.gameViewLog.utilitario.UtilitariosLogView;
 
 public class ObterLog {
@@ -17,8 +17,9 @@ public class ObterLog {
 		ArrayList<PartidaTO> lstPartidas = new ArrayList<PartidaTO>();
 		
 		try {
-			Properties prop = UtilitariosLogView.carregaConfiguracaoProperties();
-			String caminholog = prop.getProperty("caminholog");
+
+			CarregaPropertie prop = new CarregaPropertie();
+			String caminholog = prop.getCaminhoArquivo(); 
 
 			FileReader arq = new FileReader(caminholog);
 			BufferedReader lerArq = new BufferedReader(arq);
