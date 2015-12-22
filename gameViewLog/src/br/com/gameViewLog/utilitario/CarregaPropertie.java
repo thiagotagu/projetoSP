@@ -8,9 +8,6 @@ public class CarregaPropertie {
 	
 	private String caminhoArquivo;
 	private String blackList;
-	
-	
-	
 
 	public CarregaPropertie() throws IOException {		
 		this.carregaConfiguracaoProperties();

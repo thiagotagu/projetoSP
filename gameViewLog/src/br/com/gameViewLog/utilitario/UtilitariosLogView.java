@@ -1,5 +1,6 @@
 package br.com.gameViewLog.utilitario;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -153,6 +154,22 @@ public class UtilitariosLogView {
 			System.out.println(pe);
 		}
 
+		return false;
+	}
+	
+	public static boolean isBlackList(String nome){
+		
+		CarregaPropertie prop;
+		String blackList = "";
+		try {
+			prop = new CarregaPropertie();
+			blackList = prop.getBlackList();
+
+			return  (blackList.toLowerCase().contains(nome.toLowerCase()));
+			
+		} catch (IOException e) {
+			System.out.println(e);
+		}
 		return false;
 	}
 

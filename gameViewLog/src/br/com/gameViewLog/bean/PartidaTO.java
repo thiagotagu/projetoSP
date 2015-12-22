@@ -1,11 +1,13 @@
 package br.com.gameViewLog.bean;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
 import br.com.gameViewLog.beanImpl.JogadorTOImpl;
 import br.com.gameViewLog.beanImpl.PartidaTOImpl;
+import br.com.gameViewLog.utilitario.CarregaPropertie;
 import br.com.gameViewLog.utilitario.UtilitariosLogView;
 
 public class PartidaTO {
@@ -70,7 +72,7 @@ public class PartidaTO {
 	public ArrayList<JogadorTO> getJogadores() {
 
 		for (int i = 0; i < lstJogadores.size(); i++) {
-			if (lstJogadores.get(i).getNome().equalsIgnoreCase("world")) {
+			if (UtilitariosLogView.isBlackList(lstJogadores.get(i).getNome())) {
 				lstJogadores.remove(i);
 			}
 		}
@@ -146,10 +148,10 @@ public class PartidaTO {
 	}
 
 	public void fimPartida(String linha) {
-		
+
 		this.implementaDataFim(linha);
 		this.implementaHoraFim(linha);
-		
+
 	}
 
 }
