@@ -1,2 +1,2 @@
-Coloque aqui suas instruções ou comentários que ache útil/relevantes para possamos ler 
-quando estivermos avaliando a sua solução
+Basta colocar o caminho do Log no configuracaoLog.properties
+Basta criar um server tomcat para a plicacao rodar.
