@@ -1,0 +1,120 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="util" uri="/WEB-INF/tags/gameViewLogTagLib.tld"%>
+
+<util:carregaLog />
+<c:forEach var="partida" items="${lstPartidas}" varStatus="varStatus">
+	<div class="partidaRegistro" id="partidaDetalhamento">
+		<table>
+			<tr>
+				<td>Partida</td>
+				<td>Data Inicio</td>
+				<td>Data Encerramento</td>
+			</tr>
+			<tr class="detailConteudo" id="detail${partida.partida}">
+				<td>${partida.partida}</td>
+				<td>${partida.dataInicio}-${partida.horaInicio}</td>
+				<td>${partida.dataFim}-${partida.horaFim}</td>
+			</tr>
+		</table>
+	</div>
+	<div id="id${partida.partida}">
+		<table id="myTable" class="tablesorter">
+			<thead>
+				<tr>
+					<th>Lista dos Jogadores</th>
+					<th>Arma Preferida</th>
+					<th>Pontos</th>
+					<th>Mortes</th>
+					<th>Saldo</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="jogadores" items="${partida.jogadores}"
+					varStatus="varStatus">
+					<tr>
+						<td>${jogadores.nome}<c:if test="${jogadores.qtdMorte == 0}">
+								*
+							</c:if>
+						</td>
+						<td>${jogadores.armaPreferida}</td>
+						<td>${jogadores.qtdAssassinato}</td>
+						<td>${jogadores.qtdMorte}</td>
+						<td>${jogadores.saldo}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="detalhamento tabelaRank" id="id${partida.partida}">
+		<table>
+			<tr>
+				<td>Jogadores invictos</td>
+			</tr>
+			<c:forEach var="jogador" items="${partida.jogadoresInvictos}"
+				varStatus="varStatus">
+				<tr>
+					<td>${jogador.nome}</td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
+
+	<div class="detalhamento tabelaArmas" id="id${partida.partida}">
+		<table>
+			<tr>
+				<td>Rank Armas</td>
+				<td>Saldo</td>
+			</tr>
+			<c:forEach var="arma" items="${partida.armaMaisMatou}"
+				varStatus="varStatus">
+
+				<c:if test="${not empty arma.key}">
+					<tr>
+						<td>${arma.key}</td>
+						<td>${arma.value}</td>
+					</tr>
+				</c:if>
+			</c:forEach>
+		</table>
+	</div>
+
+	<div class="detalhamento tabelaSequencia" id="id${partida.jogadores}">
+		<table>
+			<tr>
+				<td>Jogador</td>
+				<td>maior sequência de assassinatos</td>
+				<td>Matou 5 em 1 min ou menos</td>
+				<td>Jogadores que não morreram</td>
+			</tr>
+			<c:forEach var="jogador" items="${partida.jogadores}"
+				varStatus="varStatus">
+				<tr>
+					<td>${jogador.nome}</td>
+					<td>${jogador.maiorSequencia}</td>
+					<td><c:if test="${jogador.matou5Em1min}">
+								*
+						</c:if>
+					</td>
+					<td><c:if test="${jogador.qtdMorte == 0}">
+								*
+						</c:if>
+					</td>
+				</tr>
+
+			</c:forEach>
+		</table>
+	</div>
+</c:forEach>
+
+ 
+
+
+
+
+
+
+
+

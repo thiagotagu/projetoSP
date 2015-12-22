@@ -1,0 +1,45 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="util" uri="/WEB-INF/tags/gameViewLogTagLib.tld"%>
+
+
+<util:carregaLog />
+ <h1> JSTL JSTL JSTL JSTL JSTL </h1>
+  <c:forEach var="partida" items="${lstPartidas}" varStatus="varStatus">
+	<div class="partidaRegistro">
+		<table>
+			<tr>
+				<td>Partida</td>
+				<td>Data Inicio</td>
+				<td>Data Encerramento</td>
+			</tr>
+
+			<tr>
+				<td>${partida.partida}</td>
+				<td>${partida.dataInicio}-${partida.horaInicio}</td>
+				<td>${partida.dataFim}-${partida.horaFim}</td>
+			</tr>
+
+		</table>
+	</div>
+	<div class="tabelaDetalhe">
+		<table>
+
+			<c:forEach var="acao" items="${partida.acoes}" varStatus="varStatus">
+
+				<c:if test="${varStatus.first}">
+					<tr>
+						<td>Tempo registro</td>
+						<td>Ação</td>
+					</tr>
+				</c:if>
+				<tr>
+					<td>${acao.data}-${acao.hora}</td>
+					<td>${acao.texto}</td>  
+				</tr>
+
+			</c:forEach>
+		</table>
+	</div>
+</c:forEach>

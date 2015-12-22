@@ -1,0 +1,44 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="util" uri="/WEB-INF/tags/gameViewLogTagLib.tld"%>
+
+
+<util:carregaLog />
+
+<script type="text/javascript">
+var jsonPartida = ${jsonPartidas}
+</script>
+
+<h1> ANGULAR ANGULAR ANGULAR ANGULAR ANGULAR ANGULAR </h1>
+
+<div class="partidaRegistro" ng-repeat-start="partida in partidas">
+	<table>
+		<tr>
+			<td>Partida</td>
+			<td>Data Inicio</td>
+			<td>Data Encerramento</td>
+		</tr>
+		<tr>
+			<td data-ng-bind="partida.partida"></td>
+			<td data-ng-bind="partida.dataInicio +' - '+ partida.horaInicio"> </td>
+			<td data-ng-bind="partida.dataFim +' - '+ partida.horaFim"> </td>
+		</tr>
+
+	</table>
+</div>
+<div class="tabelaDetalhe" ng-repeat-end>
+	<table>
+		<tr>
+			<td>Tempo registro</td>
+			<td>Ação</td>
+		</tr>
+		<tr data-ng-repeat="acao in partida.lstAcao">
+			<td data-ng-bind="acao.data + '-' + acao.hora"> </td>
+			<td data-ng-bind="acao.texto"></td>
+		</tr>
+	</table>
+</div>
+ 
+ 
+ 
